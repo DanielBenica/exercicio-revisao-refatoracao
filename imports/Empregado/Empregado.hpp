@@ -19,5 +19,5 @@ class Empregado {
     double salarioHora;  
     double quotaMensalVendas;  
     std::string nome;
-
+}
 #endif
