@@ -5,6 +5,18 @@ double Empregado::getSalarioHora(){
     return this->salarioHora;
 }
 
+void Empregado::setNome(std::string newName){
+    this->nome = newName;
+}
+
+void Empregado::setSalarioHora(double newSalario){
+    this->salarioHora = newSalario;
+}
+
+void Empregado::setQuotaMensalVendas(double newQuota){
+    this->nome = newQuota;
+}
+
 
 double Empregado::getQuotaMensalVendas(){
     return this->quotaMensalVendas;
