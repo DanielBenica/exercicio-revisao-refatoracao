@@ -3,14 +3,22 @@
 
 Vendedor::Vendedor(std::string nome, double salarioHora, double quotaMensalVendas){
 
-	this->nome = nome;
-	this->salarioHora = salarioHora;
-	this->quotaMensalVendas = quotaMensalVendas;
+	this->setNome(nome);
+	this->setSalarioHora(salarioHora);
+	this->setQuotaMensalVendas(quotaMensalVendas);
 
-	}
+}
 
+
+double getQuotaMensalVendas(){
+	return this->quotaMensalVendas;
+}
+
+void Vendedor::setQuotaMensalVendas(double newQuota){
+	this->quotaMensalVendas= newQuota;
+}
 
 double Vendedor::quotaTotalAnual(){
 	
-	return this->quotaMensalVendas*12;
+	return (this->getQuotaMensalVendas())*12;
 }

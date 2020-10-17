@@ -6,8 +6,11 @@ BUILD_DIR    = ./build
 SRC_DIR    = ./src
 INCLUDE_DIR  = ./include
 
-${BUILD_DIR}/${TARGET}: ${BUILD_DIR}/Vendedor.o ${BUILD_DIR}/Engenheiro.o ${BUILD_DIR}/main.o
+${BUILD_DIR}/${TARGET}: ${BUILD_DIR}/Vendedor.o ${BUILD_DIR}/Engenheiro.o ${BUILD_DIR}/Empregado.o ${BUILD_DIR}/main.o
 	${CC} ${CFLAGS} -o ${BUILD_DIR}/${TARGET} ${BUILD_DIR}/*.o
+
+${BUILD_DIR}/Empregado.o: ${INCLUDE_DIR}/Empregado/Empregado.hpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/Empregado/ -c ${SRC_DIR}/Empregado/Empregado.cpp -o ${BUILD_DIR}/Empregado.o
 
 ${BUILD_DIR}/Vendedor.o: ${INCLUDE_DIR}/Empregado/Vendedor.hpp ${SRC_DIR}/Empregado/Vendedor.cpp
 	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/Empregado/ -c ${SRC_DIR}/Empregado/Vendedor.cpp -o ${BUILD_DIR}/Vendedor.o
@@ -22,3 +25,6 @@ ${BUILD_DIR}/main.o: ${INCLUDE_DIR}/Empregado/Vendedor.hpp ${INCLUDE_DIR}/Empreg
 # Call 'make clean' to use it
 clean:
 	rm -f ${BUILD_DIR}/* 
+
+run:
+	${BUILD_DIR}/${TARGET}

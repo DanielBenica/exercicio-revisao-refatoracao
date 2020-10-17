@@ -13,15 +13,6 @@ void Empregado::setSalarioHora(double newSalario){
     this->salarioHora = newSalario;
 }
 
-void Empregado::setQuotaMensalVendas(double newQuota){
-    this->nome = newQuota;
-}
-
-
-double Empregado::getQuotaMensalVendas(){
-    return this->quotaMensalVendas;
-}
-
 
 std::string Empregado::getNome(){
     return this->nome;

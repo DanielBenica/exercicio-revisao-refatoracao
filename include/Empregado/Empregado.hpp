@@ -13,18 +13,15 @@ class Empregado {
     double getSalarioHora();
     void setSalarioHora(double newSalario);
     
-    double getQuotaMensalVendas();
-    void setQuotaMensalVendas(double newQuota);
     
     std::string getNome();
     void setNome(std::string newString);
     
 
 
-  protected:
+  private:
 
     double salarioHora;  
-    double quotaMensalVendas;  
     std::string nome;
 };
 

@@ -1,10 +1,10 @@
 #include "Engenheiro.hpp"
 
 
-Engenheiro::Engenheiro(std::string nome, double salarioHora, double quotaMensalVendas){
-    this->nome = nome;
-    this->salarioHora = salarioHora;
-    this->quotaMensalVendas = quotaMensalVendas;
+Engenheiro::Engenheiro(std::string nome, double salarioHora, int projetos){
+    this->setNome(nome);
+    this->setSalarioHora(salarioHora);
+    this->setProjetos(projetos);
 }
 
 void Engenheiro::setProjetos(int total){
