@@ -10,7 +10,7 @@ Vendedor::Vendedor(std::string nome, double salarioHora, double quotaMensalVenda
 }
 
 
-double getQuotaMensalVendas(){
+double Vendedor::getQuotaMensalVendas(){
 	return this->quotaMensalVendas;
 }
 
