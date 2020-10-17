@@ -1,25 +1,24 @@
-CXX       := g++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb
+CC=g++
+CFLAGS=-std=c++11 -Wall
+TARGET=program
 
-BIN     := bin
-SRC     := src
-INCLUDE := include
-LIB     := lib
-LIBRARIES   := 
-EXECUTABLE  := main
+BUILD_DIR    = ./build
+SRC_DIR    = ./src
+INCLUDE_DIR  = ./include
 
+${BUILD_DIR}/${TARGET}: ${BUILD_DIR}/Vendedor.o ${BUILD_DIR}/Engenheiro.o ${BUILD_DIR}/main.o
+	${CC} ${CFLAGS} -o ${BUILD_DIR}/${TARGET} ${BUILD_DIR}/*.o
 
-all: $(BIN)/$(EXECUTABLE)
+${BUILD_DIR}/Vendedor.o: ${INCLUDE_DIR}/Empregado/Vendedor.hpp ${SRC_DIR}/Empregado/Vendedor.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/Empregado/ -c ${SRC_DIR}/Empregado/Vendedor.cpp -o ${BUILD_DIR}/Vendedor.o
 
-run: clean all
-	clear
-	@echo "🚀 Executing..."
-	./$(BIN)/$(EXECUTABLE)
+${BUILD_DIR}/Engenheiro.o: ${INCLUDE_DIR}/Empregado/Engenheiro.hpp ${SRC_DIR}/Empregado/Engenheiro.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/Empregado/ -c ${SRC_DIR}/Empregado/Engenheiro.cpp -o ${BUILD_DIR}/Engenheiro.o
 
-$(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
-	@echo "🚧 Building..."
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
+${BUILD_DIR}/main.o: ${INCLUDE_DIR}/Empregado/Vendedor.hpp ${INCLUDE_DIR}/Empregado/Engenheiro.hpp ${SRC_DIR}/main.cpp
+	${CC} ${CFLAGS} -I ${INCLUDE_DIR}/Empregado/ -c ${SRC_DIR}/main.cpp -o ${BUILD_DIR}/main.o
 
+# Rule for cleaning files generated during compilation. 
+# Call 'make clean' to use it
 clean:
-	@echo "🧹 Clearing..."
-	-rm $(BIN)/*
+	rm -f ${BUILD_DIR}/* 
